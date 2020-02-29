@@ -1,33 +1,40 @@
 import React, { useState } from 'react';
+import Papa from 'papaparse'
 
 function App() {
-  const division = ['DG', 'PP', 'PT', 'BG'];
-  var initialItems = []
-  for (let i = 1; i <= 50; i++) {
-    initialItems = [...initialItems, {
-      id: division[Math.floor(Math.random() * division.length)],
-      name: `Sample text`,
-      time: Math.floor((Math.random() * 20) + 1)
-    }]
+  const [items, setItems] = useState([])
+
+  const [results, setResults] = useState({})
+
+  const handleUpload = (payload) => {
+    compute(payload).then(res => {
+      setResults(res);
+      setItems(payload)
+    })
   }
 
-  const [items] = useState(initialItems)
-
-  const [results] = useState({
-    dg: items.filter(item => item.id === 'DG').reduce((total, itm) => total + itm.time, 0),
-    pp: items.filter(item => item.id === 'PP').reduce((total, itm) => total + itm.time, 0),
-    pt: items.filter(item => item.id === 'PT').reduce((total, itm) => total + itm.time, 0),
-    bg: items.filter(item => item.id === 'BG').reduce((total, itm) => total + itm.time, 0),
-  })
-
+  const compute = (payload) => {
+    return new Promise((resolve, reject) => {
+      let res = {
+        dg: payload.filter(({ item }) => item.includes('DG')).reduce((total, itm) => total + Number(itm.time), 0),
+        pp: payload.filter(({ item }) => item.includes('PRG')).reduce((total, itm) => total + Number(itm.time), 0),
+        pt: payload.filter(({ item }) => item.includes('PHG')).reduce((total, itm) => total + Number(itm.time), 0),
+        bg: payload.filter(({ item }) => item.includes('BG')).reduce((total, itm) => total + Number(itm.time), 0),
+      }
+      resolve(res)
+      reject(error => console.log(error, 'error'))
+    })
+  }
+  console.log(results)
+  console.log(items)
   return (
     <div className="App">
       <header className="App-header">
         <p>Generate labor hours</p>
       </header>
-      <form>
-        <input aria-label="submit file" type="file" />
-      </form>
+
+      <FileInput handleUpload={handleUpload} />
+
       <div style={{ display: 'flex' }}>
         <table border={1} style={{ borderCollapse: 'collapse', border: '1px solid white', margin: '15px 0', fontSize: '16px' }}>
           <thead>
@@ -40,7 +47,7 @@ function App() {
             {items.map((item, index) => {
               return (
                 <tr key={index}>
-                  <td style={{ padding: '5px' }}>{item.id} {item.name}</td>
+                  <td style={{ padding: '5px' }}>{item.item}</td>
                   <td style={{ padding: '5px' }}>{item.time} hours</td>
                 </tr>
               )
@@ -72,6 +79,34 @@ const styles = {
     margin: '0 15px',
     padding: '0 0 5px 0',
   }
+}
+
+
+const FileInput = ({ handleUpload }) => {
+  const fileInput = React.createRef()
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let file = fileInput.current.files[0];
+    Papa.parse(file, {
+      header: true,
+      complete: function (results) {
+        handleUpload(results.data);
+      }
+    })
+
+
+
+
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="inputFile">Upload file</label>
+      <input type="file" ref={fileInput} />
+      <input type="submit" value="Submit" />
+    </form>
+  )
 }
 
 export default App;
