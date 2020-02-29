@@ -1,28 +1,44 @@
 import React from 'react';
+import styled from 'styled-components';
 
-export default ({results}) => {
+export default ({ results }) => {
   return (
-    <div style={{ textAlign: 'left' }}>
-      <h2>Results</h2>
-      <dl>
-        <dt style={styles.dt}>Design Group</dt>
-        <dd style={styles.dd}>{results.dg} hours</dd>
-        <dt style={styles.dt}>Production Group</dt>
-        <dd style={styles.dd}>{results.pp} hours</dd>
-        <dt style={styles.dt}>Binding Group</dt>
-        <dd style={styles.dd}>{results.bg} hours</dd>
-      </dl>
-    </div>
+    <Table>
+      <thead>
+        <tr>
+          <th colspan={2}>Results</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Design Group</td>
+          <td>{results.dg}</td>
+        </tr>
+        <tr>
+          <td>Photography Group</td>
+          <td>{results.pt}</td>
+        </tr>
+        <tr>
+          <td>Production Group</td>
+          <td>{results.pp}</td>
+        </tr>
+        <tr>
+          <td>Binding Group</td>
+          <td>{results.bg}</td>
+        </tr>
+      </tbody>
+    </Table>
   )
 }
 
-const styles = {
-  dt: {
-    fontWeight: 'bold',
-    textDecoration: 'underline',
-  },
-  dd: {
-    margin: '0 15px',
-    padding: '0 0 5px 0',
-  }
-}
+
+const Table = styled.table`
+  border-collapse: collapse; 
+  border: 1px solid gray; 
+  margin: 15px 0; 
+  font-size: 16px;
+  tr, td, th {
+    padding: 4px;
+    border: 1px solid gray; 
+  };
+`

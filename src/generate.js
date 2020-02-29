@@ -5,7 +5,7 @@ var initialItems = []
 for (let i = 1; i <= 50; i++) {
   initialItems = [...initialItems, {
     item: `${division[Math.floor(Math.random() * division.length)]} This is sample text`,
-    time: Math.floor((Math.random() * 30) + 1)
+    time: Math.floor((Math.random() * 30) + 2)
   }]
 }
 

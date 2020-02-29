@@ -1,12 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 
-export default ({items}) => {
+export default ({ items }) => {
   return (
-    <table border={1} style={{ borderCollapse: 'collapse', border: '1px solid white', margin: '15px 0', fontSize: '16px' }}>
+    <Table border={1}>
       <thead>
         <tr>
-          <th style={{ width: '200px' }}>Name</th>
-          <th style={{ width: '100px' }}>Time</th>
+          <th>Name</th>
+          <th>Time</th>
         </tr>
       </thead>
       <tbody>
@@ -19,6 +20,16 @@ export default ({items}) => {
           )
         })}
       </tbody>
-    </table>
+    </Table>
   )
 }
+
+const Table = styled.table`
+  border-collapse: collapse; 
+  border: 1px solid gray; 
+  margin: 15px 0; 
+  font-size: 16px;
+  tr, td, th {
+    border: 1px solid gray; 
+  }
+`

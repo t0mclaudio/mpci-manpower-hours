@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import FileInput from './Components/FileInput';
 import Results from './Components/Results';
 import Items from './Components/Items';
+import styled from 'styled-components';
 
 
 const App = () => {
@@ -29,17 +30,43 @@ const App = () => {
   }
 
   return (
-    <div className="App">
+    <AppWrapper>
       <header className="App-header">
-        <p>Generate labor hours</p>
+        <h1>Generate labor hours</h1>
       </header>
       <FileInput handleUpload={handleUpload} />
-      <div style={{ display: 'flex' }}>
-        <Items items={items} />
-        <Results results={results} />
-      </div>
-    </div>
+      {items.length > 0 && 
+        <Main>
+          <Items items={items} />
+          <Results results={results} />
+        </Main>
+      } 
+    </AppWrapper>
   );
 }
+
+const AppWrapper = styled.div`
+  color:#2d3436;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 800px;
+  h1 {
+    text-align: center; 
+  }
+  input {
+    border: 1px solid gray;
+    font-size: 18px;
+    border-radius: 2px;
+  }
+
+`
+
+const Main = styled.div`
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-gap: 15px;
+`
 
 export default App;

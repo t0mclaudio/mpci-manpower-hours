@@ -1,5 +1,6 @@
 import React from 'react';
-import Papa from 'papaparse'
+import Papa from 'papaparse';
+import styled from 'styled-components';
 
 export default ({ handleUpload }) => {
   const fileInput = React.createRef()
@@ -16,10 +17,29 @@ export default ({ handleUpload }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="inputFile">Upload file</label>
-      <input type="file" ref={fileInput} />
-      <input type="submit" value="Submit" />
-    </form>
+    <Form onSubmit={handleSubmit}>
+      
+      <input type="file" aria-label="select csv file"ref={fileInput} />
+      <input type="submit" value="Choose" />
+    </Form>
   )
 }
+
+const Form = styled.form`
+  display: flex;
+  margin: 0 auto;
+  input[type=submit] {
+    background-color: green;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 2px;
+  }
+  input[type=file] {
+    border: 1px solid gray;
+    color: gray;
+    padding: 15px;
+    border-radius: 2px;
+  }
+
+`
