@@ -15,7 +15,7 @@ export default ({ items }) => {
           return (
             <tr key={index}>
               <td>{item.item}</td>
-              <td style={{textAlign: 'right' }}>{item.time} hours</td>
+              <td style={{ textAlign: 'right' }}>{item.time} hours</td>
             </tr>
           )
         })}
@@ -32,5 +32,5 @@ const Table = styled.table`
   tr, td, th {
     padding: 4px;
     border: 1px solid gray; 
-  }
+  } 
 `

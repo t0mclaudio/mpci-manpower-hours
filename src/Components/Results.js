@@ -6,7 +6,7 @@ export default ({ results }) => {
     <Table>
       <thead>
         <tr>
-          <th colspan={2}>Results</th>
+          <th colSpan={2}>Results</th>
         </tr>
       </thead>
       <tbody>
