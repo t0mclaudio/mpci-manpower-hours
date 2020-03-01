@@ -38,7 +38,7 @@ const App = () => {
 
   return (
     <AppWrapper>
-      <Header>Generate labor hours</Header>
+      <Header>Compute Manpower Hours</Header>
       <FileInput handleUpload={handleUpload} />
       <CSSTransition
         in={items.length > 0}

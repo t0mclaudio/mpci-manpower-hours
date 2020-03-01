@@ -5,6 +5,12 @@ import numeral from 'numeral';
 
 export default ({ results, items }) => {
   const total = Object.values(results).reduce((total,item)=>total+item,0);
+  const colors = {
+    DG:'#FF6384',
+    PHG:'#36A2EB',
+    PRG:'#FFCE56',
+    BG:'silver',
+  }
   return (
     <div>
       <Table>
@@ -15,19 +21,19 @@ export default ({ results, items }) => {
         </thead>
         <tbody>
           <tr>
-            <td>Design Group</td>
+            <td><Swatch color={colors.DG}/>  Design Group</td>
             <td style={{ textAlign: 'right' }}>{numeral(results.dg).format('0,0')} hours</td>
           </tr>
           <tr>
-            <td>Photography Group</td>
+            <td><Swatch color={colors.PHG} />  Photography Group</td>
             <td style={{ textAlign: 'right' }}>{numeral(results.pt).format('0,0')} hours</td>
           </tr>
           <tr>
-            <td>Production Group</td>
+            <td><Swatch color={colors.PRG} />  Production Group</td>
             <td style={{ textAlign: 'right' }}>{numeral(results.pp).format('0,0')} hours</td>
           </tr>
           <tr>
-            <td>Binding Group</td>
+            <td><Swatch color={colors.BG} />  Binding Group</td>
             <td style={{ textAlign: 'right' }}>{numeral(results.bg).format('0,0')} hours</td>
           </tr>
         </tbody>
@@ -58,4 +64,12 @@ const Table = styled.table`
     padding: 4px;
     border: 1px solid gray; 
   };
+`
+
+const Swatch = styled.div`
+  display: inline-block;
+  border: 1px solid gray;
+  width: 10px;
+  height: 10px;
+  background-color: ${props => props.color}
 `
