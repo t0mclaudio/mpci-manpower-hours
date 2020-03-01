@@ -3,7 +3,7 @@ const { uuid } = require('uuidv4');
 
 const division = ['DG', 'PHG', 'PRG', 'BG'];
 var initialItems = []
-for (let i = 1; i <= 100; i++) {
+for (let i = 1; i <= 500; i++) {
   let id = uuid()
   let date = new Date()
   let dateTxt = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
@@ -11,7 +11,7 @@ for (let i = 1; i <= 100; i++) {
     id: id,
     date: dateTxt,
     job: `${division[Math.floor(Math.random() * division.length)]} ${id}`,
-    time: Math.floor((Math.random() * 10) * 2),
+    time: Math.floor(((Math.random() * 6) + 2) * 3),
     remarks: "This is a sample text" 
   }]
 }
