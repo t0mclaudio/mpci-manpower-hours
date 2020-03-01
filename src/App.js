@@ -57,7 +57,7 @@ const AppWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  width: 800px;
+  width: 960px;
   .main-enter {
     overflow: hidden;
     opacity: 0;
