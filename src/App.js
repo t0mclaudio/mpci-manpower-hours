@@ -32,7 +32,7 @@ const App = () => {
   }
 
   const getHours = (payload, id) => {
-    return payload.filter(({ item }) => item.includes(id))
+    return payload.filter(({ job }) => job.includes(id))
                   .reduce((total, itm) => total + Number(itm.time), 0)
   }
 
