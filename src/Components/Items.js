@@ -11,7 +11,8 @@ export default ({ items }) => {
         </tr>
       </thead>
       <tbody>
-        {items.map((item) => {
+        {items.map((item, index) => {
+          if (index > 20 ) return;
           return (
             <tr key={item.id}>
               <td>{item.job}</td>
