@@ -10,7 +10,7 @@ export default ({ items, results }) => {
       {items.length > 0 &&
         <Wrapper>
           <Items items={items} />
-          <Results results={results} />
+          <Results results={results} items={items.length} />
         </Wrapper>
       }
     </div>
@@ -19,6 +19,6 @@ export default ({ items, results }) => {
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 60% 40%;
   grid-gap: 15px;
 `

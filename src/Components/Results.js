@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default ({ results }) => {
+export default ({ results, items }) => {
   return (
     <Table>
       <thead>
@@ -27,6 +27,12 @@ export default ({ results }) => {
           <td style={{textAlign: 'right' }}>{results.bg} hours</td>
         </tr>
       </tbody>
+      <tfoot>
+        <tr>
+          <td><strong>Total records</strong></td>
+          <td style={{textAlign: 'right' }}><strong>{items}</strong></td>
+        </tr>
+      </tfoot>
     </Table>
   )
 }
