@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import './App.css';
 import FileInput from './Components/FileInput';
-import Results from './Components/Results';
-import Items from './Components/Items';
-import styled from 'styled-components';
-
+import Main from './Components/Main';
 
 const App = () => {
   const [items, setItems] = useState([])
@@ -32,16 +30,9 @@ const App = () => {
 
   return (
     <AppWrapper>
-      <header className="App-header">
-        <h1>Generate labor hours</h1>
-      </header>
+      <Header>Generate labor hours</Header>
       <FileInput handleUpload={handleUpload} />
-      {items.length > 0 && 
-        <Main>
-          <Items items={items} />
-          <Results results={results} />
-        </Main>
-      } 
+      <Main items={items} results={results} />
     </AppWrapper>
   );
 }
@@ -53,21 +44,10 @@ const AppWrapper = styled.div`
   justify-content: center;
   margin: 0 auto;
   width: 800px;
-  h1 {
-    text-align: center; 
-  }
-  input {
-    border: 1px solid gray;
-    font-size: 18px;
-    border-radius: 2px;
-  }
-
 `
 
-const Main = styled.div`
-  display: grid;
-  grid-template-columns: 70% 30%;
-  grid-gap: 15px;
+const Header = styled.h1`
+    text-align: center; 
 `
 
 export default App;
