@@ -6,7 +6,7 @@ export default ({ items }) => {
     <Table border={1}>
       <thead>
         <tr>
-          <th>Name</th>
+          <th></th>
           <th>Time</th>
         </tr>
       </thead>
@@ -14,8 +14,8 @@ export default ({ items }) => {
         {items.map((item, index) => {
           return (
             <tr key={index}>
-              <td style={{ padding: '5px' }}>{item.item}</td>
-              <td style={{ padding: '5px' }}>{item.time} hours</td>
+              <td>{item.item}</td>
+              <td style={{textAlign: 'right' }}>{item.time} hours</td>
             </tr>
           )
         })}
@@ -30,6 +30,7 @@ const Table = styled.table`
   margin: 15px 0; 
   font-size: 16px;
   tr, td, th {
+    padding: 4px;
     border: 1px solid gray; 
   }
 `

@@ -12,19 +12,19 @@ export default ({ results }) => {
       <tbody>
         <tr>
           <td>Design Group</td>
-          <td>{results.dg}</td>
+          <td style={{textAlign: 'right' }}>{results.dg} hours</td>
         </tr>
         <tr>
           <td>Photography Group</td>
-          <td>{results.pt}</td>
+          <td style={{textAlign: 'right' }}>{results.pt} hours</td>
         </tr>
         <tr>
           <td>Production Group</td>
-          <td>{results.pp}</td>
+          <td style={{textAlign: 'right' }}>{results.pp} hours</td>
         </tr>
         <tr>
           <td>Binding Group</td>
-          <td>{results.bg}</td>
+          <td style={{textAlign: 'right' }}>{results.bg} hours</td>
         </tr>
       </tbody>
     </Table>

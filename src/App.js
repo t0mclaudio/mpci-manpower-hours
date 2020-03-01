@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './App.css';
 import FileInput from './Components/FileInput';
 import Results from './Components/Results';
 import Items from './Components/Items';

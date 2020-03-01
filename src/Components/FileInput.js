@@ -17,10 +17,10 @@ export default ({ handleUpload }) => {
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
-      
-      <input type="file" aria-label="select csv file"ref={fileInput} />
-      <input type="submit" value="Choose" />
+    <Form >
+      <input id="select-csv"type="file" aria-label="select csv file"ref={fileInput} onChange={handleSubmit} />
+      {/* <input type="submit" value="Choose" /> */}
+      {/* <label for="select-csv">Please upload proper csv format</label> */}
     </Form>
   )
 }
