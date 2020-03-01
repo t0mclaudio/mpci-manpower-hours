@@ -11,10 +11,10 @@ export default ({ items }) => {
         </tr>
       </thead>
       <tbody>
-        {items.map((item, index) => {
+        {items.map((item) => {
           return (
-            <tr key={index}>
-              <td>{item.item}</td>
+            <tr key={item.id}>
+              <td>{item.job}</td>
               <td style={{ textAlign: 'right' }}>{item.time} hours</td>
             </tr>
           )
