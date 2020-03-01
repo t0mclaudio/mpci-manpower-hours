@@ -6,7 +6,7 @@ export default ({ items }) => {
     <Table border={1}>
       <thead>
         <tr>
-          <th></th>
+          <th>Job</th>
           <th>Time</th>
         </tr>
       </thead>
