@@ -10,6 +10,7 @@ export default ({ handleUpload }) => {
     let file = fileInput.current.files[0];
     Papa.parse(file, {
       header: true,
+      skipEmptyLines: true,
       complete: function (results) {
         handleUpload(results.data);
       }
