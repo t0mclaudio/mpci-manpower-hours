@@ -6,7 +6,6 @@ import Main from './Components/Main';
 import { CSSTransition } from 'react-transition-group';
 
 const App = () => {
-  const [ready, setReady] = useState(false)
   const [items, setItems] = useState([])
   const [results, setResults] = useState({})
 
@@ -14,8 +13,6 @@ const App = () => {
     setItems(payload)
     compute(payload).then(res => {
       setResults(res);
-    }).then(() => {
-      setReady(true);
     }).catch((e) => {
       console.log(e);
     })
@@ -44,7 +41,7 @@ const App = () => {
       <Header>Generate labor hours</Header>
       <FileInput handleUpload={handleUpload} />
       <CSSTransition
-        in={ready}
+        in={items.length > 0}
         timeout={200}
         classNames="main"
       >
