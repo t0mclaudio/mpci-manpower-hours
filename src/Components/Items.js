@@ -19,14 +19,12 @@ export default ({ items }) => {
       <tbody>
         {items.map((item, index) => {
           if (index > 20 ) return;
-          console.log(Object.keys(colors))
           let key;
           Object.keys(colors).forEach(k => {
             if (item.job.includes(k)) {
               key = k
             }
           })
-          console.log(key)
           return (
             <tr key={item.id}>
               <td><Swatch color={colors[key]} />  {item.job}</td>
