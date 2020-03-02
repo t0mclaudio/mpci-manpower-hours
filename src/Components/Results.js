@@ -68,6 +68,7 @@ const Table = styled.table`
 
 const Swatch = styled.div`
   display: inline-block;
+  border-radius: 50%;
   border: 1px solid gray;
   width: 10px;
   height: 10px;

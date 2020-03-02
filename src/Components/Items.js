@@ -53,6 +53,7 @@ const Table = styled.table`
 const Swatch = styled.div`
   display: inline-block;
   border: 1px solid gray;
+  border-radius: 50%;
   width: 10px;
   height: 10px;
   background-color: ${props => props.color}
