@@ -3,7 +3,7 @@ import { Pie } from 'react-chartjs-2';
 import styled from 'styled-components';
 
 export default ({results}) => {
-  const values = [results.dg, results.pt, results.pp, results.bg];
+  const values = [results.hours.DG, results.hours.PHG, results.hours.PRG, results.hours.BG];
   initial.datasets[0].data = values;
   return (
     <Wrapper>
