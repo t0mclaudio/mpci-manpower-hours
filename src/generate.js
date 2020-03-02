@@ -3,7 +3,7 @@ const { uuid } = require('uuidv4');
 
 const division = ['DG', 'PHG', 'PRG', 'BG'];
 var initialItems = []
-for (let i = 1; i <= 500; i++) {
+for (let i = 1; i <= 1500; i++) {
   let id = uuid()
   let date = new Date()
   let dateTxt = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
