@@ -10,9 +10,9 @@ const App = () => {
   const [results, setResults] = useState({})
 
   const handleUpload = (payload) => {
-    setItems(payload)
-    compute(payload).then(res => {
-      setResults(res);
+    compute(payload).then(response => {
+      setResults(response);
+      setItems(payload)
     }).catch((e) => {
       console.log(e);
     })
@@ -20,20 +20,30 @@ const App = () => {
 
   const compute = (payload) => {
     return new Promise((resolve, reject) => {
-      let res = {
-        dg: getHours(payload,'DG'),
-        pp:  getHours(payload,'PRG'),
-        pt:  getHours(payload,'PHG'),
-        bg:  getHours(payload,'BG'),
+      const jobs = {
+        DG: filterByJobType(payload,'DG'),
+        PRG: filterByJobType(payload,'PRG'),
+        PHG: filterByJobType(payload,'PHG'),
+        BG: filterByJobType(payload,'BG'),
       }
-      resolve(res)
+      const hours = {
+        DG: getHours(jobs.DG),
+        PRG: getHours(jobs.PRG),
+        PHG: getHours(jobs.PHG),
+        BG: getHours(jobs.BG),
+      }
+
+      resolve({jobs, hours})
       reject(error => console.log(error, 'error'))
     })
   }
 
-  const getHours = (payload, id) => {
-    return payload.filter(({ job }) => job.includes(id))
-                  .reduce((total, itm) => total + Number(itm.time), 0)
+  const filterByJobType = (payload, id) => {
+    return payload.filter(({job}) => job.includes(id))
+  }
+
+  const getHours = (jobs) => {
+    return jobs.reduce((total, item) => total + Number(item.time), 0)
   }
 
   return (
