@@ -16,5 +16,5 @@ I run the tool feeding it with a tabular data consisting of 5000 job items. What
 This is just a proof of concept as presented in the board meeting.
 
 ## A video of how the app works
-An app to compute labor hours
+
 ![](mpci.gif)
